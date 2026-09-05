@@ -1,0 +1,11 @@
+{
+  "name": "Remix Centaur Chem Enterprise ERP",
+  "description": "A comprehensive, integrated ERP system featuring CRM, Payroll, HRIS, Inventory, and Manufacturing modules with real-time reporting, role-based access control, and offline capabilities.",
+  "requestFramePermissions": [
+    "geolocation",
+    "camera"
+  ],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

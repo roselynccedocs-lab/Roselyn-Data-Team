@@ -1,0 +1,166 @@
+{
+  "entities": {
+    "Employee": {
+      "title": "Employee",
+      "description": "Master 201 Personnel Record for Centaur Chem Enterprise",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 128 },
+        "firstName": { "type": "string", "maxLength": 128 },
+        "lastName": { "type": "string", "maxLength": 128 },
+        "middleName": { "type": "string", "maxLength": 128 },
+        "nickname": { "type": "string", "maxLength": 64 },
+        "fullName": { "type": "string", "maxLength": 256 },
+        "email": { "type": "string", "maxLength": 128 },
+        "cceEmail": { "type": "string", "maxLength": 128 },
+        "position": { "type": "string", "maxLength": 128 },
+        "department": { "type": "string", "maxLength": 128 },
+        "category": { "type": "string", "maxLength": 64 },
+        "salary": { "type": "number" },
+        "hireDate": { "type": "number" },
+        "dateOfEntry": { "type": "string", "maxLength": 64 },
+        "regularizationDate": { "type": "string", "maxLength": 64 },
+        "workingYears": { "type": "string", "maxLength": 64 },
+        "workingTime": { "type": "string", "maxLength": 64 },
+        "status": { "type": "string", "maxLength": 64 },
+        "lifeCycleStage": { "type": "string", "maxLength": 64 },
+        "contactNumber": { "type": "string", "maxLength": 64 },
+        "unionBankNumber": { "type": "string", "maxLength": 64 },
+        "sssNumber": { "type": "string", "maxLength": 64 },
+        "philHealthNumber": { "type": "string", "maxLength": 64 },
+        "pagIbigNumber": { "type": "string", "maxLength": 64 },
+        "tinNumber": { "type": "string", "maxLength": 64 },
+        "gender": { "type": "string", "maxLength": 32 },
+        "birthDate": { "type": "string", "maxLength": 64 },
+        "maritalStatus": { "type": "string", "maxLength": 64 },
+        "residentialAddress": { "type": "string", "maxLength": 512 },
+        "departureDate": { "type": "string", "maxLength": 64 },
+        "departureReason": { "type": "string", "maxLength": 256 },
+        "remarks": { "type": "string", "maxLength": 512 }
+      },
+      "required": ["id", "firstName", "lastName", "email", "position", "department", "status"]
+    },
+    "UserProfile": {
+      "title": "UserProfile",
+      "description": "User profile with roles and departmental permissions",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string", "maxLength": 128 },
+        "email": { "type": "string", "maxLength": 128 },
+        "displayName": { "type": "string", "maxLength": 128 },
+        "role": { "type": "string", "maxLength": 64 },
+        "department": { "type": "string", "maxLength": 64 }
+      },
+      "required": ["uid", "email"]
+    },
+    "ITTicket": {
+      "title": "ITTicket",
+      "description": "Central IT support ticket record",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 128 },
+        "ticketNo": { "type": "string", "maxLength": 64 },
+        "title": { "type": "string", "maxLength": 256 },
+        "status": { "type": "string", "maxLength": 32 },
+        "severity": { "type": "string", "maxLength": 32 },
+        "requestor": { "type": "string", "maxLength": 128 },
+        "requestorEmail": { "type": "string", "maxLength": 128 },
+        "category": { "type": "string", "maxLength": 128 },
+        "description": { "type": "string", "maxLength": 2048 },
+        "assignedTo": { "type": "string", "maxLength": 128 },
+        "createdAt": { "type": "string", "maxLength": 64 }
+      },
+      "required": ["id", "ticketNo", "title", "status", "severity", "requestor"]
+    },
+    "Notification": {
+      "title": "Notification",
+      "description": "System notification alert for admins",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 128 },
+        "type": { "type": "string", "maxLength": 64 },
+        "title": { "type": "string", "maxLength": 256 },
+        "message": { "type": "string", "maxLength": 1024 },
+        "ticketId": { "type": "string", "maxLength": 128 },
+        "createdAt": { "type": "string", "maxLength": 64 },
+        "read": { "type": "boolean" }
+      },
+      "required": ["id", "title", "message"]
+    },
+    "ActiveUserSession": {
+      "title": "ActiveUserSession",
+      "description": "Active user SSO session record",
+      "type": "object",
+      "properties": {
+        "sessionId": { "type": "string", "maxLength": 128 },
+        "userId": { "type": "string", "maxLength": 128 },
+        "displayName": { "type": "string", "maxLength": 128 },
+        "email": { "type": "string", "maxLength": 128 },
+        "loginTime": { "type": "number" },
+        "lastActive": { "type": "number" },
+        "status": { "type": "string", "maxLength": 32 }
+      },
+      "required": ["sessionId", "userId", "email"]
+    },
+    "SecurityAuditEntry": {
+      "title": "SecurityAuditEntry",
+      "description": "Security audit trail log entry",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 128 },
+        "userId": { "type": "string", "maxLength": 128 },
+        "email": { "type": "string", "maxLength": 128 },
+        "eventType": { "type": "string", "maxLength": 64 },
+        "timestamp": { "type": "number" }
+      },
+      "required": ["id", "userId", "eventType", "timestamp"]
+    }
+  },
+  "firestore": {
+    "/employees/{employeeId}": {
+      "schema": "Employee",
+      "description": "Master employee records collection for Centaur Chem Enterprise"
+    },
+    "/users/{userId}": {
+      "schema": "UserProfile",
+      "description": "User profile collection"
+    },
+    "/support_tickets/{ticketId}": {
+      "schema": "ITTicket",
+      "description": "Central IT support tickets collection"
+    },
+    "/notifications/{notifId}": {
+      "schema": "Notification",
+      "description": "Admin notification alerts collection"
+    },
+    "/user_sessions/{sessionId}": {
+      "schema": "ActiveUserSession",
+      "description": "Active user sessions"
+    },
+    "/security_audit_logs/{logId}": {
+      "schema": "SecurityAuditEntry",
+      "description": "Security audit logs"
+    },
+    "/asset_registry/{docId}": {
+      "description": "Central persistent store for fleet assets, office supplies, and audit trail"
+    },
+    "/fleet_assets/{assetId}": {
+      "description": "Central fleet assets collection"
+    },
+    "/office_supplies/{sku}": {
+      "description": "Central office supplies collection"
+    },
+    "/audit_trail/{logId}": {
+      "description": "Central audit trail collection"
+    },
+    "/master_requests/{requestId}": {
+      "description": "Master Data Governance request workflow queue (DRAFT, PENDING_AI_CHECK, PENDING_QA, PENDING_MDM, REVISION_REQUESTED, ACTIVE, REJECTED)"
+    },
+    "/master_register/{recordId}": {
+      "description": "Active and inactive committed master records (Customer, Supplier, Item)"
+    },
+    "/master_audit_logs/{logId}": {
+      "description": "Immutable master data governance lifecycle audit trail logs"
+    }
+  }
+}

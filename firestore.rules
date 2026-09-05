@@ -1,0 +1,108 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    // Connection test document
+    match /test/connection {
+      allow read, write: if true;
+    }
+
+    // User profiles & directory roster
+    match /users/{userId} {
+      allow read, list: if true;
+      allow create, update: if true;
+      allow delete: if true;
+    }
+
+    // Master Employee 201 records
+    match /employees/{employeeId} {
+      allow read, list: if true;
+      allow create, update: if true;
+      allow delete: if true;
+    }
+
+    // Central IT support tickets
+    match /support_tickets/{ticketId} {
+      allow read, list: if true;
+      allow create, update: if true;
+      allow delete: if true;
+    }
+
+    // Admin notifications
+    match /notifications/{notifId} {
+      allow read, list: if true;
+      allow create, update: if true;
+      allow delete: if true;
+    }
+
+    // Active user sessions
+    match /user_sessions/{sessionId} {
+      allow read, list: if true;
+      allow create, update: if true;
+      allow delete: if true;
+    }
+
+    // Security audit logs
+    match /security_audit_logs/{logId} {
+      allow read, list: if true;
+      allow create, update: if true;
+      allow delete: if true;
+    }
+
+    // Asset registry central persistent storage
+    match /asset_registry/{docId} {
+      allow read, list: if true;
+      allow create, update: if true;
+      allow delete: if true;
+    }
+
+    // Individual fleet asset documents
+    match /fleet_assets/{assetId} {
+      allow read, list: if true;
+      allow create, update: if true;
+      allow delete: if true;
+    }
+
+    // Individual office supply documents
+    match /office_supplies/{sku} {
+      allow read, list: if true;
+      allow create, update: if true;
+      allow delete: if true;
+    }
+
+    // Individual audit trail documents
+    match /audit_trail/{logId} {
+      allow read, list: if true;
+      allow create, update: if true;
+      allow delete: if true;
+    }
+
+    // Master Data Governance Workflow Requests
+    match /master_requests/{requestId} {
+      allow read, list: if true;
+      allow create, update: if true;
+      allow delete: if true;
+    }
+
+    // Active Master Register Records
+    match /master_register/{recordId} {
+      allow read, list: if true;
+      allow create, update: if true;
+      allow delete: if true;
+    }
+
+    // Governance Audit Trail Logs
+    match /master_audit_logs/{logId} {
+      allow read, list: if true;
+      allow create, update: if true;
+      allow delete: if true;
+    }
+
+    // Default catch-all
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}
+

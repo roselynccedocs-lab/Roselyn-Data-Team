@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Centaur Chem Enterprise - ERP & HRIS</title>
+    <meta name="description" content="Enterprise Resource Planning system for Centaur Chem Enterprise featuring HRIS, Payroll, CRM, Inventory, and Manufacturing modules with Philippine statutory compliance and GPS timekeeping." />
+    <meta property="og:title" content="Centaur Chem Enterprise - ERP & HRIS" />
+    <meta property="og:description" content="Enterprise Resource Planning system for Centaur Chem Enterprise featuring HRIS, Payroll, CRM, Inventory, and Manufacturing modules with Philippine statutory compliance and GPS timekeeping." />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <script>
+      (function() {
+        try {
+          var theme = localStorage.getItem('theme');
+          if (theme === 'dark' || (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+          } else {
+            document.documentElement.classList.remove('dark');
+          }
+        } catch (e) {}
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
+
