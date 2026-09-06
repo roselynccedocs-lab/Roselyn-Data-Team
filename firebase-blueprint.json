@@ -161,6 +161,27 @@
     },
     "/master_audit_logs/{logId}": {
       "description": "Immutable master data governance lifecycle audit trail logs"
+    },
+    "/performance_transactions/{txnId}": {
+      "description": "Ledger of performance score transactions and point adjustments"
+    },
+    "/performance_360_evaluations/{evalId}": {
+      "description": "Peer, manager, and HR 180/360 performance evaluations"
+    },
+    "/performance_strengths_weaknesses/{swId}": {
+      "description": "AI & evaluation detected strengths and weaknesses with HR confirmation"
+    },
+    "/performance_attendance/{attId}": {
+      "description": "Biometric attendance records and tardiness deductions"
+    },
+    "/performance_disciplinary/{discId}": {
+      "description": "HR disciplinary records (IR, NTE, DA, Suspension)"
+    },
+    "/performance_quarter_locks/{quarter}": {
+      "description": "Quarterly performance audit lock state"
+    },
+    "/performance_configs/{configId}": {
+      "description": "Admin configurable rules and point deduction settings"
     }
   }
 }

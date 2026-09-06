@@ -99,6 +99,55 @@ service cloud.firestore {
       allow delete: if true;
     }
 
+    // Performance System Transactions Ledger
+    match /performance_transactions/{txnId} {
+      allow read, list: if true;
+      allow create, update: if true;
+      allow delete: if true;
+    }
+
+    // Performance 360 Evaluations
+    match /performance_360_evaluations/{evalId} {
+      allow read, list: if true;
+      allow create, update: if true;
+      allow delete: if true;
+    }
+
+    // Performance Strengths & Weaknesses
+    match /performance_strengths_weaknesses/{swId} {
+      allow read, list: if true;
+      allow create, update: if true;
+      allow delete: if true;
+    }
+
+    // Performance Attendance Records
+    match /performance_attendance/{attId} {
+      allow read, list: if true;
+      allow create, update: if true;
+      allow delete: if true;
+    }
+
+    // Performance Disciplinary Records
+    match /performance_disciplinary/{discId} {
+      allow read, list: if true;
+      allow create, update: if true;
+      allow delete: if true;
+    }
+
+    // Performance Quarter Locks
+    match /performance_quarter_locks/{quarter} {
+      allow read, list: if true;
+      allow create, update: if true;
+      allow delete: if true;
+    }
+
+    // Performance Configuration & Rules
+    match /performance_configs/{configId} {
+      allow read, list: if true;
+      allow create, update: if true;
+      allow delete: if true;
+    }
+
     // Default catch-all
     match /{document=**} {
       allow read, write: if false;

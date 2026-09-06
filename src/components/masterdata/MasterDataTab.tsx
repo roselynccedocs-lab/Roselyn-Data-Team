@@ -14,6 +14,7 @@ import { QAReviewerQueue } from './QAReviewerQueue';
 import { MDMAdminWorkspace } from './MDMAdminWorkspace';
 import { MasterRegisterView } from './MasterRegisterView';
 import { AuditLogExplorer } from './AuditLogExplorer';
+import { EmployeeKPIDashboard } from './EmployeeKPIDashboard';
 import { 
   Database, 
   Layers, 
@@ -24,7 +25,8 @@ import {
   Edit3, 
   AlertCircle, 
   CheckCircle2, 
-  Sparkles 
+  Sparkles,
+  Activity
 } from 'lucide-react';
 
 export function MasterDataTab() {
@@ -35,7 +37,7 @@ export function MasterDataTab() {
   const [isLoading, setIsLoading] = useState(true);
 
   // Active Sub-Tab view
-  const [activeTab, setActiveTab] = useState<'REGISTER' | 'INTAKE' | 'QA_QUEUE' | 'MDM_WORKSPACE' | 'AUDIT_LOGS'>('REGISTER');
+  const [activeTab, setActiveTab] = useState<'REGISTER' | 'INTAKE' | 'QA_QUEUE' | 'MDM_WORKSPACE' | 'AUDIT_LOGS' | 'KPI_DASHBOARD'>('REGISTER');
   const [editingRequest, setEditingRequest] = useState<MasterRequestDocument | null>(null);
   const [intakeDomain, setIntakeDomain] = useState<DomainType>('CUSTOMER');
 
@@ -154,6 +156,18 @@ export function MasterDataTab() {
               <FileText className="w-[18px] h-[18px] stroke-[2.5px]" />
               <span>Audit Trail Ledger</span>
             </button>
+
+            <button
+              onClick={() => setActiveTab('KPI_DASHBOARD')}
+              className={`flex items-center gap-2 px-3.5 py-2 rounded-xl text-sm font-extrabold transition-all ${
+                activeTab === 'KPI_DASHBOARD'
+                  ? 'bg-indigo-600 text-white shadow-sm'
+                  : 'bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white'
+              }`}
+            >
+              <Activity className="w-[18px] h-[18px] stroke-[2.5px]" />
+              <span>People Analytics</span>
+            </button>
           </div>
 
           <button
@@ -269,6 +283,13 @@ export function MasterDataTab() {
       {activeTab === 'AUDIT_LOGS' && (
         <AuditLogExplorer
           auditLogs={auditLogs}
+          requests={requests}
+          masterRecords={masterRecords}
+        />
+      )}
+
+      {activeTab === 'KPI_DASHBOARD' && (
+        <EmployeeKPIDashboard
           requests={requests}
           masterRecords={masterRecords}
         />

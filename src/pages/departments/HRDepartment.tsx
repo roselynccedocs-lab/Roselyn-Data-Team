@@ -10,7 +10,7 @@ import { Briefcase, HeartHandshake, UserPlus, Target, CreditCard, Users } from '
 import { SubmitSupportButton } from '../../components/ui/SubmitSupportButton';
 
 export function HRDepartment() {
-  const [activeTab, setActiveTab] = useState<'roster' | 'hris' | 'benefits' | 'recruitment' | 'performance' | 'payroll'>('roster');
+  const [activeTab, setActiveTab] = useState<'roster' | 'hris' | 'benefits' | 'recruitment' | 'performance' | 'payroll'>('performance');
 
   return (
     <div className="space-y-6">
